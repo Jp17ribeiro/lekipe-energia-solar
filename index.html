@@ -4,255 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEKIPE SERVIÇOS - Energia Solar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <style>
         :root {
-        --primary-color: #1df700;
-        --secondary-color: #4CAF50;
-        --highlight-green: #7ED321;
-        --dark-blue: #ffffff;
-        --text-color: #000000;
-        --light-bg: #f5f5f5;
-        --card-bg: #ffffff;
+            --primary-color: #1df700;
+            --secondary-color: #4CAF50;
+            --highlight-green: #7ED321;
+            --dark-blue: #ffffff;
+            --text-color: #000000;
+            --light-bg: #f5f5f5;
+            --card-bg: #ffffff;
         }
 
         /* Reset Básico */
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
 
         body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: var(--light-bg);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
         }
 
         .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* ----------- Navbar ----------- */
         .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(27, 31, 59, 0.95);
-        color: rgb(2, 2, 2);
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        padding: 25px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(27, 31, 59, 0.95);
+            color: rgb(2, 2, 2);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 25px 0;
+        }
+        .navbar-content {display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-size: 1.5rem; font-weight: bold; color: white;}
+        .main-nav-links {display: flex; gap: 30px; flex-grow: 1; justify-content: center;}
+        .main-nav-links a {color: white; font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-size: 0.95rem; padding: 8px 0;}
+        .main-nav-links a:hover {color: var(--primary-color);}
+        .action-links {display: flex; gap: 20px; align-items: center;}
+        .btn-orcamento {background-color: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background-color 0.3s;}
+        .btn-orcamento:hover {background-color: #e09400;}
+        a {text-decoration: none; color: var(--dark-blue);}
+        main {padding-top: 120px;}
+        .hamburger {display: none;}
+
+        @media (max-width: 768px) {
+            .navbar {padding: 12px 0;}
+            main {padding-top: 62px;}
+            .logo {font-size: 1.2rem; text-align: left;}
+            .navbar-content {flex-direction: row; gap: 0; align-items: center;}
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 2rem;
+                cursor: pointer;
+                margin-left: auto;
+                margin-right: 10px;
+                z-index: 1002;
+            }
+            .main-nav-links {
+                display: none;
+                flex-direction: column;
+                background: rgba(27,31,59,0.98);
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                padding: 20px 0 12px 0;
+                z-index: 1001;
+                text-align: center;
+            }
+            .main-nav-links.show {display: flex;}
         }
 
-        .navbar-content {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center;
+        @media (min-width: 769px) {
+            .logo {font-size: 1.5rem;}
+            .main-nav-links {
+                display: flex !important;
+                position: static;
+                background: none;
+                flex-direction: row;
+                padding: 0;
+                width: auto;
+                gap: 30px;
+                text-align: left;
+            }
+            .hamburger {display: none;}
+            main {padding-top: 120px;}
         }
 
-        .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
+        /* ----------- Hero ----------- */
+        .hero {background-image: url('imagem placa solar.jpg'); background-size: cover; background-position: center; height: 600px; display: flex; align-items: center; text-align: center; color: white; position: relative; padding-top: 0;}
+        .hero::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4);}
+        .hero .container {position: relative; z-index: 1;}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 15px; text-transform: uppercase;}
+        .hero p {font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;}
+        .hero-btns {display: flex; justify-content: center; gap: 20px;}
+
+        @media (max-width: 480px) {
+            .navbar {padding: 10px 0;}
+            .logo {font-size: 1rem;}
+            .main-nav-links a {font-size: .95rem; padding: 8px 0;}
+            .main-nav-links {gap: 5px;}
+            .hero {height: auto; padding: 80px 10px;}
+            .hero h1 {font-size: 2rem;}
+            .hero p {font-size: 1rem;}
+            .hero-btns {flex-direction: column; gap: 10px;}
+            footer {font-size: .8rem;}
         }
 
-        .main-nav-links {
-        display: flex;
-        gap: 30px;
-        flex-grow: 1;
-        justify-content: center;
-        }
-
-        .main-nav-links a {
-        color: white;
-        font-weight: 500;
-        transition: color 0.3s;
-        text-transform: uppercase;
-        font-size: 0.95rem;
-        padding: 8px 0;
-        }
-
-        .main-nav-links a:hover {
-        color: var(--primary-color);
-        }
-
-        .action-links {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        }
-
-        .btn-orcamento {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-        }
-        .btn-orcamento:hover {
-        background-color: #e09400;
-        }
-
-        a {
-        text-decoration: none;
-        color: var(--dark-blue);
-        }
-
-        main {
-        padding-top: 120px;
-        }
-
-        /* ------------- Seções ------------- */
+        /* ----------- Seções ----------- */
         section { padding: 60px 0; }
-        h2 {
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 40px;
-        color: var(--text-color);
-        }
-
-        .btn {
-        padding: 12px 25px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: background-color 0.3s;
-        display: inline-block;
-        }
-        .btn-primary {
-        background-color: #04ff04;
-        color: rgb(255, 255, 255);
-        }
+        h2 {font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--text-color);}
+        .btn {padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: background-color 0.3s; display: inline-block;}
+        .btn-primary {background-color: #04ff04; color: rgb(255, 255, 255);}
         .btn-primary:hover { background-color: #0097a7; }
-
-        .btn-secondary {
-        border: 2px solid white;
-        color: white;
-        background-color: transparent;
-        }
-        .btn-secondary:hover {
-        background-color: white;
-        color: var(--dark-blue);
-        }
-
-        .card-grid {
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        flex-wrap: wrap;
-        }
-
-        .card {
-        background-color: var(--card-bg);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        flex: 1 1 300px;
-        min-height: 250px;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .icon-placeholder {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        }
+        .btn-secondary {border: 2px solid white; color: white; background-color: transparent;}
+        .btn-secondary:hover {background-color: white; color: var(--dark-blue);}
+        .card-grid {display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;}
+        .card {background-color: var(--card-bg); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); flex: 1 1 300px; min-height: 250px; display: flex; flex-direction: column;}
+        .icon-placeholder {width: 50px; height: 50px; border-radius: 50%; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem;}
         .green-icon { background: var(--highlight-green); color: white; }
         .white-icon { background: white; color: var(--secondary-color); }
 
-        /* ----------- Hero ----------- */
-        .hero {
-        background-image: url('imagem placa solar.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 600px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: white;
-        position: relative;
-        padding-top: 0;
-        }
-        .hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
-        }
-        .hero .container { position: relative; z-index: 1; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; }
-        .hero-btns {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        }
+        /* --------- Benefícios, Valores, Serviços, Orçamento (Idêntico ao seu base) - PODE MANTER igual --------- */
 
-        /* --------- Benefícios --------- */
-        .beneficios { margin-top: -100px; position: relative; z-index: 50; padding-bottom: 60px; }
-        .card-beneficio { text-align: center; padding: 40px 20px; }
-        .destaque-card { background: linear-gradient(135deg, var(--highlight-green), var(--secondary-color)); color: white; transform: translateY(-20px);}
-        .destaque-card .white-icon { color: var(--highlight-green);}
-        .destaque-card p { color: white; }
+        .beneficios {margin-top: -100px; position: relative; z-index: 50; padding-bottom: 60px;}
+        .card-beneficio {text-align: center; padding: 40px 20px;}
+        .destaque-card {background: linear-gradient(135deg, var(--highlight-green), var(--secondary-color)); color: white; transform: translateY(-20px);}
+        .destaque-card .white-icon {color: var(--highlight-green);}
+        .destaque-card p {color: white;}
 
-        /* --------- Valores --------- */
         .valores {
-        background-image: url('imagem solar eolica.jpg');
-        background-size: cover;
-        background-position: center;
-        text-align: center;
-        color: white;
-        padding: 80px 0;
-        position: relative;
+            background-image: url('imagem solar eolica.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            padding: 80px 0;
+            position: relative;
         }
-        .valores::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(27, 31, 59, 0.7);
-        }
-        .valores * { position: relative; z-index: 1; }
-        .valores h2 { color: white; margin-bottom: 50px; font-weight: 300;}
-        .card-valor {
-        background-color: rgba(255, 255, 255, 0.95);
-        color: var(--text-color);
-        box-shadow: none;
-        border: 1px solid rgba(0,0,0,0.1);
-        min-height: 350px;
-        }
-        .card-valor h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .card-valor.destaque-card { background: linear-gradient(135deg, var(--highlight-green), var(--secondary-color)); color: white; transform: none;}
+        .valores::before {content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0;background: rgba(27, 31, 59, 0.7);}
+        .valores * {position: relative;z-index: 1;}
+        .valores h2 {color: white;margin-bottom: 50px;font-weight: 300;}
+        .card-valor {background-color: rgba(255, 255, 255, 0.95);color: var(--text-color);box-shadow: none;border: 1px solid rgba(0,0,0,0.1);min-height: 350px;}
+        .card-valor h3 {font-size: 1.5rem;margin-bottom: 10px;}
+        .card-valor.destaque-card {background: linear-gradient(135deg, var(--highlight-green), var(--secondary-color));color: white;transform: none;}
         .card-valor.destaque-card h3,
-        .card-valor.destaque-card p { color: white; }
+        .card-valor.destaque-card p {color: white;}
 
-        /* --------- Serviços --------- */
         .servicos { background-color: var(--light-bg);}
         .servicos h2 { color: var(--text-color); max-width: 800px; margin-left: auto; margin-right: auto; }
         .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px;}
-        .servico-item {
-        background-color: var(--card-bg);
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        text-align: center;
-        overflow: hidden;
-        padding-bottom: 20px;
-        position: relative;
-        }
+        .servico-item {background-color: var(--card-bg);border-radius: 10px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);text-align: center;overflow: hidden;padding-bottom: 20px;position: relative;}
         .servico-img { height: 150px; background-size: cover; background-position: center; }
         .instalacao-img { background-image: url('instalacao_paineis.jpg'); }
         .desenvolvimento-img { background-image: url('desenvolvimento_projetos.jpg'); }
@@ -264,48 +177,43 @@
         .saiba-mais:hover { background-color: var(--primary-color); color: white; }
 
         /* ----------- Soluções ----------- */
-        .solucoes { background-color: var(--light-bg); padding: 80px 0; }
-        .solucoes-content { display: flex; align-items: center; gap: 50px;}
-        .solucoes-text { flex: 1; }
-        .solucoes-text h2 { text-align: left; margin-bottom: 30px; color: var(--text-color);}
-        .solucoes-text ul { list-style: none;}
-        .solucoes-text li { font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; color: var(--text-color);}
-        .check-icon { color: var(--highlight-green); font-size: 1.3rem; margin-right: 10px;}
-        .solucoes-image-card { flex: 1; position: relative; }
+        .solucoes {background-color: var(--light-bg); padding: 80px 0;}
+        .solucoes-content {display: flex; align-items: center; gap: 50px;}
+        .solucoes-text {flex: 1;}
+        .solucoes-text h2 {text-align: left; margin-bottom: 30px; color: var(--text-color);}
+        .solucoes-text ul {list-style: none;}
+        .solucoes-text li {font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; color: var(--text-color);}
+        .check-icon {color: var(--highlight-green); font-size: 1.3rem; margin-right: 10px;}
+        .solucoes-image-card {flex: 1; position: relative;}
         .image-placeholder-solucoes {
-        width: 100%;
-        height: 450px;
-        background-color: var(--dark-blue);
-        background-image: url('imagem mercado livre.jpg');
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px;
+            width: 100%;
+            height: 450px;
+            background-color: var(--dark-blue);
+            background-image: url('imagem mercado livre.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
         }
-        .mercado-livre-card {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 200px;
-        text-align: center;
-        position: absolute;
-        bottom: -20px;
-        left: -20px;
+        @media (max-width: 768px) {
+            .solucoes-content {flex-direction: column; gap: 15px;}
+            .image-placeholder-solucoes {
+                display: block;
+                width: 100%;
+                min-height: 220px;
+                height: 220px;
+                background-size: cover;
+                background-position: center;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-image: url('imagem mercado livre.jpg') !important;
+            }
         }
-        .mercado-livre-card p:first-of-type { font-weight: bold; color: var(--secondary-color); margin-top: 5px; }
+        .mercado-livre-card {background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 200px; text-align: center; position: absolute; bottom: -20px; left: -20px;}
+        .mercado-livre-card p:first-of-type {font-weight: bold; color: var(--secondary-color); margin-top: 5px;}
 
-        /* ----------- Orçamento ----------- */
+        /* Orçamento e rodapé mantidos iguais ao seu código anterior */
         .orcamento { background-color: white; padding: 80px 0; }
-        .orcamento-box {
-        max-width: 700px;
-        background-color: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        border: 1px solid #ddd;
-        text-align: center;
-        margin: 0 auto;
-        }
+        .orcamento-box {max-width: 700px; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.05); border: 1px solid #ddd; text-align: center; margin: 0 auto;}
         .orcamento h2 { color: var(--secondary-color); margin-bottom: 10px;}
         .orcamento .subtitle { color: #666; margin-bottom: 30px; font-size: 1.1rem;}
         .orcamento-form { text-align: left;}
@@ -315,115 +223,24 @@
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;}
         .form-group textarea { resize: vertical;}
         .file-note { background-color: #ffeeb3; padding: 15px; border-radius: 5px; text-align: center; margin-bottom: 30px; color: #6a5300;}
-        .btn-whatsapp {
-        width: 100%;
-        background-color: var(--primary-color);
-        color: white;
-        padding: 15px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: background-color 0.3s;
-        }
+        .btn-whatsapp {width: 100%; background-color: var(--primary-color); color: white; padding: 15px 20px; border: none; cursor: pointer; font-size: 1.2rem; transition: background-color 0.3s;}
         .btn-whatsapp:hover { background-color: #e09400; }
-
-        /* ----------- Rodapé ----------- */
-        footer {
-        background-color: var(--dark-blue);
-        color: rgb(3,49,255);
-        text-align: center;
-        padding: 20px 0;
-        font-size: 0.9rem;
-        }
-
-        /* ----------- RESPONSIVIDADE ----------- */
-        @media (max-width: 768px) {
-        .navbar-content { flex-direction: column; gap: 6px; align-items: stretch;}
-        main { padding-top: 120px; }
-        .logo { font-size: 1.2rem; color: white; flex: none; text-align: left; }
-        .main-nav-links {
-            display: none;
-            flex-direction: column;
-            background: rgba(27, 31, 59, 0.98);
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            padding: 20px 0 12px 0;
-            z-index: 1001;
-            text-align: center;
-        }
-        .main-nav-links.show { display: flex; }
-        .hamburger {
-            display: block;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            margin-left: auto;
-            margin-right: 10px;
-            z-index: 1002;
-        }
-        .hero h1 { font-size: 2.5rem; }
-        .card-grid { flex-direction: column; }
-        .destaque-card { transform: none; }
-        .form-group-inline { flex-direction: column; gap: 0;}
-        .solucoes-content { flex-direction: column; gap: 15px;}
-        .solucoes-text h2 { text-align: center;}
-        .image-placeholder-solucoes {
-            display: block;
-            width: 100%;
-            min-height: 220px;
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-        .mercado-livre-card { position: static; margin-top: 20px; width: 100%;}
-        .orcamento-box { width: 90%; }
-        }
-        @media (min-width: 769px) {
-        .main-nav-links {
-            display: flex !important;
-            position: static;
-            background: none;
-            flex-direction: row;
-            padding: 0;
-            width: auto;
-            gap: 30px;
-            text-align: left;
-        }
-        .hamburger { display: none; }
-        }
-        @media (max-width: 480px) {
-        body { font-size: 15px; padding: 0 10px;}
-        .navbar { padding: 10px 0;}
-        .logo { font-size: 1rem; }
-        .main-nav-links a { font-size: .95rem; padding: 8px 0;}
-        .main-nav-links { gap: 5px; }
-        .hero { height: auto; padding: 80px 10px; background-position: top;}
-        .hero h1 { font-size: 2rem;}
-        .hero p { font-size: 1rem; }
-        .hero-btns { flex-direction: column; gap: 10px;}
-        footer { font-size: .8rem;}
-        }
-
+        footer {background-color: var(--dark-blue); color: rgb(3,49,255); text-align: center; padding: 20px 0; font-size: 0.9rem;}
     </style>
 </head>
 <body>
-
     <header class="navbar">
-    <div class="container navbar-content">
-        <div class="logo">Lekipe Serviços</div>
-        <div class="hamburger" id="hamburger-menu">
-        <i class="fas fa-bars"></i>
+        <div class="container navbar-content">
+            <div class="logo">Lekipe Serviços</div>
+            <div class="hamburger" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav-links" id="mobile-nav">
+                <a href="#">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#orcamento">Contato</a>
+            </nav>
         </div>
-        <nav class="main-nav-links" id="mobile-nav">
-        <a href="#">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#orcamento">Contato</a>
-        </nav>
-    </div>
     </header>
 
     <main>
@@ -477,29 +294,25 @@
             <div class="container">
                 <h2>Faça a sua escolha de energia sustentável para o sucesso dos seus negócios</h2>
                 <div class="servicos-grid">
-                    
                     <div class="servico-item">
                         <div class="servico-img instalacao-img"></div> <div class="icon-placeholder green-icon small-icon"><i class="fas fa-wrench"></i></div>
                         <h4>Instalação de Painéis Solares</h4>
-                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a> 
+                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a>
                     </div>
-                    
                     <div class="servico-item">
                         <div class="servico-img desenvolvimento-img"></div> <div class="icon-placeholder green-icon small-icon"><i class="fas fa-seedling"></i></div>
                         <h4>Desenvolvimento de Projetos de Energia Renovável</h4>
-                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a> 
+                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a>
                     </div>
-                    
                     <div class="servico-item">
                         <div class="servico-img mercado-livre-img"></div> <div class="icon-placeholder green-icon small-icon"><i class="fas fa-piggy-bank"></i></div>
                         <h4>Mercado Livre de energia, custo zero de investimento e economia de 30% no custo da energia.</h4>
-                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a> 
+                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a>
                     </div>
-                    
                     <div class="servico-item">
                         <div class="servico-img manutencao-img"></div> <div class="icon-placeholder green-icon small-icon"><i class="fas fa-tools"></i></div>
                         <h4>Manutenção de Painéis Solares</h4>
-                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a> 
+                        <a href="#orcamento" class="saiba-mais">SAIBA MAIS &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -525,7 +338,6 @@
             <div class="container orcamento-box">
                 <h2>SOLICITE SEU ORÇAMENTO GRÁTIS</h2>
                 <p class="subtitle">Preencha os dados e receba sua análise de economia em instantes!</p>
-                
                 <form class="orcamento-form" onsubmit="return false;">
                     <div class="form-group-inline">
                         <div class="form-group">
@@ -537,28 +349,21 @@
                             <input type="tel" id="telefone" placeholder="(XX) XXXXX-XXXX" required>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email" id="email" placeholder="seu@email.com" required>
                     </div>
-
                     <div class="form-group">
                         <label for="assunto">Assunto:</label>
                         <input type="text" id="assunto" value="Solicitação de Orçamento - Energia Solar" readonly>
                     </div>
-
                     <div class="form-group">
                         <label for="mensagem">Mensagem:</label>
                         <textarea id="mensagem" rows="5" placeholder="Descreva suas necessidades ou dúvidas adicionais..."></textarea>
                     </div>
-
-                    <p class="file-note">
-                        Por gentileza, mandar o arquivo em PDF da sua conta junto com as informações acima.
-                    </p>
-
+                    <p class="file-note">Por gentileza, mandar o arquivo em PDF da sua conta junto com as informações acima.</p>
                     <button type="button" class="btn btn-whatsapp" id="enviar-whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Enviar Orçamento via WhatsApp
+                        <i class="fab fa-whatsapp"></i> Enviar Orçamento via WhatsApp
                     </button>
                 </form>
             </div>
@@ -573,58 +378,40 @@
 
     <script>
         document.getElementById('enviar-whatsapp-btn').addEventListener('click', function() {
-            // *** 1. MUDAR PARA O SEU NÚMERO DE TELEFONE REAL (DDD + Número, sem caracteres especiais) ***
-            // O número '5524981102792' foi mantido do seu código original, mas ajuste se necessário.
             const numeroWhatsApp = '5524981102792'; 
-
-            // 2. Coleta dos dados do formulário
             const nome = document.getElementById('nome').value;
             const telefone = document.getElementById('telefone').value;
             const email = document.getElementById('email').value;
             const mensagemAdicional = document.getElementById('mensagem').value;
             const assunto = document.getElementById('assunto').value;
-            
-            // Validação simples dos campos obrigatórios
             if (!nome || !telefone || !email) {
                 alert('Por favor, preencha seu Nome, Telefone e E-mail.');
                 return;
             }
-
-            // 3. Criação da mensagem formatada
             let mensagem = `*SOLICITAÇÃO DE ORÇAMENTO - LEKIPE SERVIÇOS*\n\n`;
             mensagem += `*Assunto:* ${assunto}\n`;
             mensagem += `*Nome:* ${nome}\n`;
             mensagem += `*Telefone:* ${telefone}\n`;
             mensagem += `*E-mail:* ${email}\n\n`;
-            
             if (mensagemAdicional) {
                 mensagem += `*Mensagem Adicional:*\n${mensagemAdicional}\n\n`;
             }
-
             mensagem += `_Por gentileza, anexar o arquivo em PDF da sua conta no WhatsApp._`;
-            
-            // 4. Codificação da mensagem para a URL
             const mensagemCodificada = encodeURIComponent(mensagem);
-
-            // 5. Montagem e redirecionamento para o link do WhatsApp
             const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemCodificada}`;
-
             window.open(urlWhatsApp, '_blank');
         });
+
+        const hamburger = document.getElementById('hamburger-menu');
+        const nav = document.getElementById('mobile-nav');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('show');
+            });
+        });
     </script>
-
-<script>
-  const hamburger = document.getElementById('hamburger-menu');
-  const nav = document.getElementById('mobile-nav');
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('show');
-    });
-  });
-</script>
-
 </body>
 </html>
