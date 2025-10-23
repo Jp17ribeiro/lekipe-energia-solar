@@ -642,77 +642,49 @@ footer {
 }
     /* ---------- Ajustes adicionais para telas pequenas ---------- */
 
-/* Pequenos smartphones (até 480px) */
-@media (max-width: 480px) {
-    body {
-        font-size: 15px;
-        padding: 0 10px;
-    }
-
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-        text-align: center;
-        margin-bottom: 4px;
-    }
-
+    /* Pequenos smartphones (até 480px) */
+    @media (max-width: 480px) {
+        /* Esconde menu links e mostra hamburger no mobile */
+    @media (max-width: 480px) {
     .main-nav-links {
+        display: none;
         flex-direction: column;
-        gap: 5px;
+        background: rgba(27, 31, 59, 0.98);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0 12px 0;
+        z-index: 1001;
         text-align: center;
     }
-
-    .hero {
-        height: auto;
-        padding: 80px 10px;
-        background-position: top;
+    .main-nav-links.show {
+        display: flex;
     }
-
-    .hero h1 {
+    .hamburger {
+        display: block;
+        color: white;
         font-size: 2rem;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 10px;
     }
-
-    .hero p {
-        font-size: 1rem;
+    .logo {
+        flex: none;
+        width: 100%;
+        text-align: left;
+        font-size: 1.2rem;
+        color: white;
     }
-
-    .hero-btns {
-        flex-direction: column;
-        gap: 10px;
     }
-
-    .card-grid {
-        flex-direction: column;
-        gap: 20px;
+    /* Desktop: mostra links, esconde hamburger */
+    @media (min-width: 481px) {
+    .main-nav-links {
+        display: flex !important;
     }
-
-    .solucoes-content {
-        flex-direction: column;
-        gap: 20px;
+    .hamburger {
+        display: none;
     }
-
-    .orcamento-box {
-        padding: 20px;
-        width: 95%;
-    }
-
-    .form-group-inline {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    footer {
-        font-size: 0.8rem;
-    }
-}
-
-/* Tablets e telas médias (481px a 1024px) */
-@media (min-width: 481px) and (max-width: 1024px) {
-     .navbar {
-        padding: 17px 0;
     }
     .logo {
         font-size: 1.3rem;
@@ -731,10 +703,20 @@ footer {
     }
 
     .solucoes-content {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
+        gap: 15px;
     }
-
+    .image-placeholder-solucoes {
+        display: block;
+        width: 100%;
+        min-height: 220px;
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
     .orcamento-box {
         width: 90%;
     }
@@ -746,8 +728,10 @@ footer {
     <header class="navbar">
         <div class="container navbar-content">
             <div class="logo"><a href="#">Lekipe Serviços</a></div> 
-            
-            <nav class="main-nav-links">
+            <div class="hamburger" id="hamburger-menu">
+            <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav-links" id="mobile-nav">
                 <a href="#">Início</a>
                 <a href="#servicos">Serviços</a>
                 <a href="#orcamento">Contato</a>
@@ -940,6 +924,20 @@ footer {
             window.open(urlWhatsApp, '_blank');
         });
     </script>
+
+<script>
+    const hamburger = document.getElementById('hamburger-menu');
+    const nav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('show');
+    });
+    // Opcional: fecha menu ao clicar fora ou em um link
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+        nav.classList.remove('show');
+        });
+    });
+</script>
 
 </body>
 </html>
